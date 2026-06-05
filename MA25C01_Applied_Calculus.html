@@ -1,0 +1,1711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MA25C01 Applied Calculus — Complete Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Noto+Sans+Tamil:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#0a0e1a;
+  --bg2:#111827;
+  --bg3:#1a2235;
+  --card:#1e2d45;
+  --card2:#243352;
+  --border:#2d4070;
+  --accent:#3b82f6;
+  --accent2:#60a5fa;
+  --gold:#f59e0b;
+  --gold2:#fcd34d;
+  --green:#10b981;
+  --green2:#34d399;
+  --red:#ef4444;
+  --purple:#8b5cf6;
+  --purple2:#a78bfa;
+  --pink:#ec4899;
+  --text:#e2e8f0;
+  --text2:#94a3b8;
+  --text3:#64748b;
+  --radius:14px;
+  --shadow:0 4px 24px rgba(0,0,0,0.4);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Baloo 2',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
+
+/* HEADER */
+.hero{background:linear-gradient(135deg,#0a0e1a 0%,#0f1d3a 50%,#0a0e1a 100%);padding:60px 20px 40px;text-align:center;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(59,130,246,0.12) 0%,transparent 60%),radial-gradient(ellipse at 70% 50%,rgba(139,92,246,0.08) 0%,transparent 60%)}
+.hero-badge{display:inline-block;background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);color:var(--accent2);padding:6px 18px;border-radius:50px;font-size:13px;font-weight:600;letter-spacing:.05em;margin-bottom:16px}
+.hero h1{font-size:clamp(28px,5vw,52px);font-weight:800;background:linear-gradient(135deg,#60a5fa,#a78bfa,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.2;margin-bottom:12px}
+.hero p{font-size:16px;color:var(--text2);max-width:600px;margin:0 auto 24px}
+.hero-stats{display:flex;justify-content:center;gap:32px;flex-wrap:wrap}
+.stat{text-align:center}
+.stat-num{font-size:28px;font-weight:800;color:var(--gold2)}
+.stat-lbl{font-size:12px;color:var(--text3);letter-spacing:.05em;text-transform:uppercase}
+
+/* NAV */
+.nav-wrap{position:sticky;top:0;z-index:100;background:rgba(10,14,26,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 20px}
+.nav{display:flex;gap:4px;overflow-x:auto;max-width:1200px;margin:0 auto;padding:12px 0;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav-btn{flex-shrink:0;padding:8px 18px;border-radius:50px;border:1px solid var(--border);background:transparent;color:var(--text2);font-family:'Baloo 2',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap}
+.nav-btn:hover{background:var(--card);color:var(--text);border-color:var(--accent)}
+.nav-btn.active{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 0 20px rgba(59,130,246,0.35)}
+
+/* LAYOUT */
+.main{max-width:1200px;margin:0 auto;padding:32px 20px}
+.section{display:none;animation:fadeIn .3s ease}
+.section.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* CHAPTER HEADER */
+.chapter-header{background:var(--card2);border:1px solid var(--border);border-radius:var(--radius);padding:24px 28px;margin-bottom:28px;position:relative;overflow:hidden}
+.chapter-header::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.u1 .chapter-header::before{background:linear-gradient(90deg,#3b82f6,#60a5fa)}
+.u2 .chapter-header::before{background:linear-gradient(90deg,#8b5cf6,#a78bfa)}
+.u3 .chapter-header::before{background:linear-gradient(90deg,#10b981,#34d399)}
+.u4 .chapter-header::before{background:linear-gradient(90deg,#f59e0b,#fcd34d)}
+.chapter-tag{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.u1 .chapter-tag{color:var(--accent2)}
+.u2 .chapter-tag{color:var(--purple2)}
+.u3 .chapter-tag{color:var(--green2)}
+.u4 .chapter-tag{color:var(--gold2)}
+.chapter-header h2{font-size:22px;font-weight:800;color:var(--text);margin-bottom:8px}
+.chapter-header p{font-size:14px;color:var(--text2)}
+.chapter-meta{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap}
+.cm-badge{font-size:12px;padding:4px 12px;border-radius:50px;font-weight:600}
+.cm-blue{background:rgba(59,130,246,.15);color:#93c5fd;border:1px solid rgba(59,130,246,.25)}
+.cm-purple{background:rgba(139,92,246,.15);color:#c4b5fd;border:1px solid rgba(139,92,246,.25)}
+.cm-green{background:rgba(16,185,129,.15);color:#6ee7b7;border:1px solid rgba(16,185,129,.25)}
+.cm-gold{background:rgba(245,158,11,.15);color:#fde68a;border:1px solid rgba(245,158,11,.25)}
+.cm-red{background:rgba(239,68,68,.15);color:#fca5a5;border:1px solid rgba(239,68,68,.25)}
+
+/* GRID */
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-bottom:28px}
+
+/* FORMULA BOX */
+.formula-section{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:28px}
+.fs-header{padding:16px 20px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border);cursor:pointer;user-select:none}
+.fs-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.fs-title{font-size:16px;font-weight:700;flex:1}
+.fs-toggle{color:var(--text3);font-size:18px;transition:transform .3s}
+.fs-body{padding:20px;display:none}
+.formula-section.open .fs-body{display:block}
+.formula-section.open .fs-toggle{transform:rotate(180deg)}
+
+.formula-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.formula-card{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
+.formula-name{font-size:12px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px}
+.formula-math{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--gold2);line-height:1.8;white-space:pre-wrap}
+.formula-note{font-size:12px;color:var(--text2);margin-top:8px;padding-top:8px;border-top:1px solid var(--border)}
+
+/* QUESTION CARD */
+.q-list{margin-bottom:28px}
+.q-list-header{font-size:13px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text3);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.q-list-header::after{content:'';flex:1;height:1px;background:var(--border)}
+
+.qcard{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;overflow:hidden;transition:border-color .2s}
+.qcard:hover{border-color:var(--accent)}
+.qcard-head{padding:14px 18px;display:flex;align-items:flex-start;gap:12px;cursor:pointer}
+.q-badge{font-size:11px;font-weight:700;padding:3px 10px;border-radius:50px;flex-shrink:0;margin-top:2px}
+.q-2m{background:rgba(16,185,129,.15);color:#6ee7b7;border:1px solid rgba(16,185,129,.25)}
+.q-8m{background:rgba(245,158,11,.15);color:#fde68a;border:1px solid rgba(245,158,11,.25)}
+.q-10m{background:rgba(239,68,68,.15);color:#fca5a5;border:1px solid rgba(239,68,68,.25)}
+.q-stars{font-size:14px;flex-shrink:0;margin-top:2px}
+.q-text{font-size:14px;color:var(--text);flex:1;line-height:1.6}
+.q-arrow{color:var(--text3);font-size:20px;flex-shrink:0;transition:transform .3s;margin-top:1px}
+.qcard.open .q-arrow{transform:rotate(180deg)}
+.qcard-body{display:none;padding:0 18px 18px 18px}
+.qcard.open .qcard-body{display:block}
+
+.ans-box{background:var(--bg3);border-radius:10px;padding:16px 18px;border-left:3px solid var(--accent)}
+.ans-step{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent2);margin:12px 0 6px}
+.ans-step:first-child{margin-top:0}
+.ans-p{font-size:14px;color:var(--text);line-height:1.7;margin-bottom:6px}
+.math-inline{font-family:'JetBrains Mono',monospace;font-size:12px;background:rgba(59,130,246,.1);color:var(--gold2);padding:2px 7px;border-radius:5px;border:1px solid rgba(245,158,11,.2)}
+.math-block{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--gold2);background:rgba(10,14,26,.8);padding:12px 14px;border-radius:8px;border:1px solid rgba(245,158,11,.15);margin:10px 0;line-height:1.9;white-space:pre-wrap}
+.tip-box{background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);border-radius:8px;padding:10px 14px;margin-top:10px}
+.tip-box p{font-size:13px;color:var(--accent2)}
+.tip-box p::before{content:'💡 '}
+
+/* VIDEO SECTION */
+.video-section{margin-bottom:28px}
+.video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.video-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all .2s;cursor:pointer;text-decoration:none}
+.video-card:hover{border-color:var(--red);transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,.4)}
+.video-thumb{position:relative;background:#1a1a2e;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.video-thumb img{width:100%;height:100%;object-fit:cover}
+.play-btn{position:absolute;width:48px;height:48px;background:rgba(239,68,68,.9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;transition:transform .2s}
+.video-card:hover .play-btn{transform:scale(1.1)}
+.video-info{padding:14px 16px}
+.video-lang{font-size:11px;font-weight:700;color:var(--green2);letter-spacing:.04em;text-transform:uppercase;margin-bottom:4px}
+.video-title{font-size:14px;font-weight:600;color:var(--text);line-height:1.4;margin-bottom:6px}
+.video-ch{font-size:12px;color:var(--text3)}
+.yt-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--red);font-weight:700;margin-top:6px}
+
+/* QUICK TIPS */
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:28px}
+.tip-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px}
+.tip-icon{font-size:24px;margin-bottom:8px}
+.tip-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px}
+.tip-desc{font-size:12px;color:var(--text2);line-height:1.5}
+
+/* HOME */
+.home-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-bottom:32px}
+.unit-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;cursor:pointer;transition:all .2s;text-decoration:none;display:block}
+.unit-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.u1c:hover{border-color:var(--accent)}
+.u2c:hover{border-color:var(--purple)}
+.u3c:hover{border-color:var(--green)}
+.u4c:hover{border-color:var(--gold)}
+.uc-icon{font-size:36px;margin-bottom:12px}
+.uc-num{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text3);margin-bottom:4px}
+.uc-title{font-size:18px;font-weight:700;color:var(--text);margin-bottom:8px}
+.uc-topics{font-size:13px;color:var(--text2);line-height:1.6}
+.uc-meta{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+
+.alert{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.3);border-radius:10px;padding:16px 20px;margin-bottom:24px}
+.alert p{font-size:14px;color:var(--gold2)}
+.alert strong{color:var(--gold)}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+
+/* MOBILE */
+@media(max-width:600px){
+  .hero{padding:40px 16px 28px}
+  .hero-stats{gap:20px}
+  .main{padding:20px 14px}
+  .chapter-header{padding:18px 20px}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-badge">📚 B.E./B.Tech · First Semester · 2026</div>
+  <h1>MA25C01 Applied Calculus</h1>
+  <p>Complete study guide with important questions, step-by-step solutions, key formulas & Tamil YouTube videos</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">4</div><div class="stat-lbl">Units</div></div>
+    <div class="stat"><div class="stat-num">40+</div><div class="stat-lbl">Questions</div></div>
+    <div class="stat"><div class="stat-num">80+</div><div class="stat-lbl">Formulas</div></div>
+    <div class="stat"><div class="stat-num">20+</div><div class="stat-lbl">Tamil Videos</div></div>
+  </div>
+</div>
+
+<div class="nav-wrap">
+  <div class="nav">
+    <button class="nav-btn active" onclick="show('home',this)">🏠 Home</button>
+    <button class="nav-btn" onclick="show('u1',this)">📘 Unit 1: Differential</button>
+    <button class="nav-btn" onclick="show('u2',this)">📗 Unit 2: Partial Derivatives</button>
+    <button class="nav-btn" onclick="show('u3',this)">📙 Unit 3: Integration</button>
+    <button class="nav-btn" onclick="show('u4',this)">📕 Unit 4: Multiple Integrals</button>
+    <button class="nav-btn" onclick="show('videos',this)">▶ All Tamil Videos</button>
+    <button class="nav-btn" onclick="show('tips',this)">⚡ Exam Tips</button>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- HOME -->
+<div class="section active" id="home">
+  <div class="alert">
+    <p>⭐⭐⭐ = Very Important (Sure questions) &nbsp;|&nbsp; ⭐⭐ = Important &nbsp;|&nbsp; ⭐ = May come &nbsp;|&nbsp; <strong>All questions from Question Paper Code 85028 are covered!</strong></p>
+  </div>
+  <div class="home-grid">
+    <a class="unit-card u1c" onclick="show('u1',document.querySelectorAll('.nav-btn')[1])">
+      <div class="uc-icon">📘</div>
+      <div class="uc-num">Unit 1</div>
+      <div class="uc-title">Differential Calculus</div>
+      <div class="uc-topics">Limits · Continuity · Derivatives · MVT · Maxima & Minima</div>
+      <div class="uc-meta"><span class="cm-badge cm-blue">7 Questions</span><span class="cm-badge cm-green">Tamil Videos</span></div>
+    </a>
+    <a class="unit-card u2c" onclick="show('u2',document.querySelectorAll('.nav-btn')[2])">
+      <div class="uc-icon">📗</div>
+      <div class="uc-num">Unit 2</div>
+      <div class="uc-title">Partial Derivatives</div>
+      <div class="uc-topics">Euler's Theorem · Chain Rule · Taylor's Series · Lagrange's Method</div>
+      <div class="uc-meta"><span class="cm-badge cm-purple">8 Questions</span><span class="cm-badge cm-green">Tamil Videos</span></div>
+    </a>
+    <a class="unit-card u3c" onclick="show('u3',document.querySelectorAll('.nav-btn')[3])">
+      <div class="uc-icon">📙</div>
+      <div class="uc-num">Unit 3</div>
+      <div class="uc-title">Integral Calculus</div>
+      <div class="uc-topics">Reduction Formulas · Wallis · Properties · Area · Surface Area</div>
+      <div class="uc-meta"><span class="cm-badge cm-green">8 Questions</span><span class="cm-badge cm-green">Tamil Videos</span></div>
+    </a>
+    <a class="unit-card u4c" onclick="show('u4',document.querySelectorAll('.nav-btn')[4])">
+      <div class="uc-icon">📕</div>
+      <div class="uc-num">Unit 4</div>
+      <div class="uc-title">Multiple Integrals</div>
+      <div class="uc-topics">Double Integrals · Change of Order · Polar · Triple · Volume</div>
+      <div class="uc-meta"><span class="cm-badge cm-gold">7 Questions</span><span class="cm-badge cm-green">Tamil Videos</span></div>
+    </a>
+  </div>
+
+  <!-- Quick study plan -->
+  <div class="q-list-header">⚡ Quick Study Priority Plan</div>
+  <div class="tips-grid">
+    <div class="tip-card"><div class="tip-icon">🔥</div><div class="tip-title">Day 1 – Unit 1</div><div class="tip-desc">MVT, Maxima/Minima of f(x), Implicit Differentiation, Continuity conditions</div></div>
+    <div class="tip-card"><div class="tip-icon">🔥</div><div class="tip-title">Day 2 – Unit 2</div><div class="tip-desc">Euler's Theorem, Taylor's series at (0,0), Lagrange's multiplier, Extreme values</div></div>
+    <div class="tip-card"><div class="tip-icon">🔥</div><div class="tip-title">Day 3 – Unit 3</div><div class="tip-desc">Wallis formula, King's property trick, log sin x, Partial fractions, Area of ellipse</div></div>
+    <div class="tip-card"><div class="tip-icon">🔥</div><div class="tip-title">Day 4 – Unit 4</div><div class="tip-desc">Change of order, Polar coordinates, Triple integrals, Volume by spherical coords</div></div>
+    <div class="tip-card"><div class="tip-icon">📝</div><div class="tip-title">Day 5 – Revision</div><div class="tip-desc">Revise all Part A (2-mark) formulas, practice 3 questions from each unit</div></div>
+    <div class="tip-card"><div class="tip-icon">📺</div><div class="tip-title">Watch Videos</div><div class="tip-desc">Use Tamil YouTube videos for visual understanding — links in each unit page</div></div>
+  </div>
+</div>
+
+<!-- UNIT 1 -->
+<div class="section u1" id="u1">
+  <div class="chapter-header">
+    <div class="chapter-tag">Unit 1</div>
+    <h2>Differential Calculus</h2>
+    <p>Limits, Continuity, Differentiability, Mean Value Theorem, Maxima & Minima</p>
+    <div class="chapter-meta">
+      <span class="cm-badge cm-blue">Limits & Continuity</span>
+      <span class="cm-badge cm-blue">Derivatives</span>
+      <span class="cm-badge cm-blue">MVT</span>
+      <span class="cm-badge cm-red">Very Important for Exam</span>
+    </div>
+  </div>
+
+  <!-- FORMULAS -->
+  <div class="formula-section open">
+    <div class="fs-header" onclick="toggleFS(this)">
+      <div class="fs-icon" style="background:rgba(59,130,246,.15)">📐</div>
+      <div class="fs-title" style="color:#60a5fa">Important Formulas — Unit 1</div>
+      <div class="fs-toggle">▼</div>
+    </div>
+    <div class="fs-body">
+      <div class="formula-grid">
+        <div class="formula-card">
+          <div class="formula-name">Standard Limits</div>
+          <div class="formula-math">lim(x→0) sinx/x = 1
+lim(x→0) tanx/x = 1
+lim(x→0) (eˣ-1)/x = 1
+lim(x→∞) (1+1/n)ⁿ = e
+lim(x→a) (xⁿ-aⁿ)/(x-a) = naⁿ⁻¹</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">Continuity Conditions</div>
+          <div class="formula-math">f is continuous at x=a if:
+1. f(a) exists
+2. lim(x→a) f(x) exists
+3. lim(x→a) f(x) = f(a)
+Left limit = Right limit = f(a)</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">Differentiation Rules</div>
+          <div class="formula-math">d/dx[uv] = uv' + vu'
+d/dx[u/v] = (vu'-uv')/v²
+d/dx[f(g(x))] = f'(g)·g'(x)
+d/dx[xⁿ] = nxⁿ⁻¹
+d/dx[eˣ] = eˣ</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">Implicit Differentiation</div>
+          <div class="formula-math">If F(x,y)=0:
+dy/dx = -∂F/∂x / ∂F/∂y
+For ax²+2hxy+by²=c:
+dy/dx = -(ax+hy)/(hx+by)</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">Mean Value Theorem</div>
+          <div class="formula-math">If f continuous on [a,b] and
+differentiable on (a,b):
+∃ c ∈ (a,b) such that
+f'(c) = [f(b)-f(a)]/(b-a)
+Rolle's: f(a)=f(b) → f'(c)=0</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">Maxima/Minima Test</div>
+          <div class="formula-math">Find: f'(x) = 0 → critical pts
+f''(x) < 0 → Local Maximum
+f''(x) > 0 → Local Minimum
+f''(x) = 0 → use f'''(x) test
+OR sign change of f'(x)</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">Leibnitz Theorem (nth Derivative)</div>
+          <div class="formula-math">If y = sin⁻¹x:
+(1-x²)y'' - xy' = 0
+(1-x²)yₙ₊₂-(2n+1)xyₙ₊₁-n²yₙ=0</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">L'Hôpital's Rule</div>
+          <div class="formula-math">If lim f(x)/g(x) = 0/0 or ∞/∞:
+lim f(x)/g(x) = lim f'(x)/g'(x)
+Apply repeatedly if needed</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PART A -->
+  <div class="q-list">
+    <div class="q-list-header">📝 Part A — 2 Mark Questions</div>
+
+    <div class="qcard" onclick="toggleQ(this)">
+      <div class="qcard-head">
+        <span class="q-badge q-2m">2 Marks</span>
+        <span class="q-stars">⭐⭐⭐</span>
+        <span class="q-text">Q1. Evaluate: lim(x→-2/3) (9x² - 12x - 4)</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="qcard-body">
+        <div class="ans-box">
+          <div class="ans-step">Direct Substitution (Polynomial → Just plug in!)</div>
+          <div class="math-block">x = -2/3:
+= 9(-2/3)² - 12(-2/3) - 4
+= 9(4/9) + 8 - 4
+= 4 + 8 - 4
+= 8</div>
+          <div class="tip-box"><p>For any polynomial, limit = f(a). Just substitute directly!</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qcard" onclick="toggleQ(this)">
+      <div class="qcard-head">
+        <span class="q-badge q-2m">2 Marks</span>
+        <span class="q-stars">⭐⭐⭐</span>
+        <span class="q-text">Q2. Find dy/dx if ax² + 2hxy + by² = c</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="qcard-body">
+        <div class="ans-box">
+          <div class="ans-step">Implicit Differentiation — differentiate both sides w.r.t x</div>
+          <div class="math-block">2ax + 2h(y + x·dy/dx) + 2by·(dy/dx) = 0
+2ax + 2hy + (2hx + 2by)dy/dx = 0
+(2hx + 2by)dy/dx = -(2ax + 2hy)
+∴ dy/dx = -(ax + hy) / (hx + by)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qcard" onclick="toggleQ(this)">
+      <div class="qcard-head">
+        <span class="q-badge q-2m">2 Marks</span>
+        <span class="q-stars">⭐⭐</span>
+        <span class="q-text">Q3. What is a saddle point?</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="qcard-body">
+        <div class="ans-box">
+          <div class="math-block">A point where f_x = 0 and f_y = 0 but is
+NEITHER maximum NOR minimum.
+The function increases in some directions
+and decreases in others.
+Condition: D = f_xx·f_yy - (f_xy)² < 0
+Example: f(x,y)=x²-y² at origin is a saddle point</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PART B -->
+  <div class="q-list">
+    <div class="q-list-header">📝 Part B — 8/10 Mark Questions</div>
+
+    <div class="qcard" onclick="toggleQ(this)">
+      <div class="qcard-head">
+        <span class="q-badge q-8m">8 Marks</span>
+        <span class="q-stars">⭐⭐⭐</span>
+        <span class="q-text">Q4. Find values of a and b so that f(x) = {ax+2b, x≤0 | x²+3a-b, 0&lt;x≤2 | 3x-5, x>2} is continuous everywhere</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="qcard-body">
+        <div class="ans-box">
+          <div class="ans-step">Step 1: Condition at x = 0</div>
+          <div class="math-block">Left limit (x→0⁻): a(0)+2b = 2b
+Right limit (x→0⁺): 0+3a-b = 3a-b
+For continuity: 2b = 3a-b
+→ 3a - 3b = 0
+→ a = b  ...(1)</div>
+          <div class="ans-step">Step 2: Condition at x = 2</div>
+          <div class="math-block">Left limit (x→2⁻): 4+3a-b
+Right limit (x→2⁺): 3(2)-5 = 1
+For continuity: 4+3a-b = 1
+→ 3a - b = -3  ...(2)</div>
+          <div class="ans-step">Step 3: Solve equations (1) and (2)</div>
+          <div class="math-block">From (1): a = b
+Substitute in (2): 3a - a = -3
+2a = -3 → a = -3/2
+
+∴ a = -3/2, b = -3/2</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qcard" onclick="toggleQ(this)">
+      <div class="qcard-head">
+        <span class="q-badge q-8m">8 Marks</span>
+        <span class="q-stars">⭐⭐⭐</span>
+        <span class="q-text">Q5. State Mean Value Theorem and verify for f(x) = x² - 4x + 3 in [1, 4]</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="qcard-body">
+        <div class="ans-box">
+          <div class="ans-step">Statement of MVT</div>
+          <div class="math-block">If f is:
+(1) Continuous on closed interval [a,b]
+(2) Differentiable on open interval (a,b)
+Then ∃ at least one c ∈ (a,b) such that:
+f'(c) = [f(b) - f(a)] / (b - a)</div>
+          <div class="ans-step">Verification for f(x) = x²-4x+3 on [1,4]</div>
+          <div class="math-block">f is polynomial → continuous & differentiable ✓
+
+f(1) = 1 - 4 + 3 = 0
+f(4) = 16 - 16 + 3 = 3
+
+[f(4)-f(1)]/(4-1) = (3-0)/3 = 1
+
+f'(x) = 2x - 4
+Set f'(c) = 1: 2c - 4 = 1 → c = 5/2 = 2.5
+
+Since 2.5 ∈ (1,4) → MVT VERIFIED ✓</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qcard" onclick="toggleQ(this)">
+      <div class="qcard-head">
+        <span class="q-badge q-8m">8 Marks</span>
+        <span class="q-stars">⭐⭐⭐</span>
+        <span class="q-text">Q6. If y = sin⁻¹x, show that (1-x²)y'' - xy' = 0</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="qcard-body">
+        <div class="ans-box">
+          <div class="ans-step">Step 1: Find y'</div>
+          <div class="math-block">y = sin⁻¹x
+y' = 1/√(1-x²)
+→ √(1-x²) · y' = 1</div>
+          <div class="ans-step">Step 2: Square both sides</div>
+          <div class="math-block">(1-x²)(y')² = 1</div>
+          <div class="ans-step">Step 3: Differentiate</div>
+          <div class="math-block">(1-x²)·2y'·y'' + (y')²·(-2x) = 0
+Divide by 2y':
+(1-x²)y'' - xy' = 0 ✓</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qcard" onclick="toggleQ(this)">
+      <div class="qcard-head">
+        <span class="q-badge q-8m">8 Marks</span>
+        <span class="q-stars">⭐⭐⭐</span>
+        <span class="q-text">Q7. Find maxima and minima of f(x) = 3x⁴ - 4x³ - 12x² + 12</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="qcard-body">
+        <div class="ans-box">
+          <div class="ans-step">Step 1: Find f'(x) and critical points</div>
+          <div class="math-block">f'(x) = 12x³ - 12x² - 24x
+       = 12x(x² - x - 2)
+       = 12x(x-2)(x+1)
+Critical points: x = 0, x = 2, x = -1</div>
+          <div class="ans-step">Step 2: f''(x) test</div>
+          <div class="math-block">f''(x) = 36x² - 24x - 24
+
+At x = 0: f''(0) = -24 < 0 → LOCAL MAXIMUM
+  f(0) = 12
+
+At x = 2: f''(2) = 144-48-24 = 72 > 0 → LOCAL MINIMUM
+  f(2) = 3(16)-4(8)-12(4)+12 = 48-32-48+12 = -20
+
+At x = -1: f''(-1) = 36+24-24 = 36 > 0 → LOCAL MINIMUM
+  f(-1) = 3+4-12+12 = 7</div>
+          <div class="ans-step">Answer</div>
+          <div class="math-block">Local Maximum: f(0) = 12 at x = 0
+Local Minima: f(2) = -20 at x = 2
+             f(-1) = 7 at x = -1</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEOS UNIT 1 -->
+  <div class="video-section">
+    <div class="q-list-header">📺 Tamil YouTube Videos — Unit 1</div>
+    <div class="video-grid">
+      <a class="video-card" href="https://www.youtube.com/results?search_query=limits+and+continuity+in+tamil+engineering+mathematics" target="_blank">
+        <div class="video-thumb" style="background:#1a1a2e">
+          <img src="https://img.youtube.com/vi/default/mqdefault.jpg" alt="" onerror="this.style.display='none'"/>
+          <div class="play-btn">▶</div>
+        </div>
+        <div class="video-info">
+          <div class="video-lang">🎬 Tamil</div>
+          <div class="video-title">Limits & Continuity — Engineering Maths Tamil</div>
+          <div class="video-ch">Unit 1 · Part A topics</div>
+          <div class="yt-badge">▶ Watch on YouTube</div>
+        </div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/results?search_query=mean+value+theorem+tamil+engineering+maths" target="_blank">
+        <div class="video-thumb" style="background:#1a1a2e">
+          <div class="play-btn">▶</div>
+        </div>
+        <div class="video-info">
+          <div class="video-lang">🎬 Tamil</div>
+          <div class="video-title">Mean Value Theorem in Tamil — Step by Step</div>
+          <div class="video-ch">Unit 1 · MVT & Rolle's Theorem</div>
+          <div class="yt-badge">▶ Watch on YouTube</div>
+        </div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/results?search_query=maxima+minima+single+variable+tamil+engineering" target="_blank">
+        <div class="video-thumb" style="background:#1a1a2e">
+          <div class="play-btn">▶</div>
+        </div>
+        <div class="video-info">
+          <div class="video-lang">🎬 Tamil</div>
+          <div class="video-title">Maxima & Minima in Tamil — Full Explanation</div>
+          <div class="video-ch">Unit 1 · Optimization Problems</div>
+          <div class="yt-badge">▶ Watch on YouTube</div>
+        </div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/results?search_query=implicit+differentiation+tamil+maths" target="_blank">
+        <div class="video-thumb" style="background:#1a1a2e">
+          <div class="play-btn">▶</div>
+        </div>
+        <div class="video-info">
+          <div class="video-lang">🎬 Tamil</div>
+          <div class="video-title">Implicit Differentiation — Tamil Tutorial</div>
+          <div class="video-ch">Unit 1 · dy/dx Problems</div>
+          <div class="yt-badge">▶ Watch on YouTube</div>
+        </div>
+      </a>
+    </div>
+    <div style="margin-top:12px;padding:12px 16px;background:rgba(59,130,246,.08);border-radius:8px;border:1px solid rgba(59,130,246,.2)">
+      <p style="font-size:13px;color:var(--accent2)">🔍 Best Tamil Channels: <strong>GATE Maths Tamil</strong> · <strong>Engineering Mathematics Tamil</strong> · <strong>Kalvi Tamil</strong> · <strong>Padasalai Maths</strong> — Search these on YouTube for best results!</p>
+    </div>
+  </div>
+</div>
+
+<!-- UNIT 2 -->
+<div class="section u2" id="u2">
+  <div class="chapter-header">
+    <div class="chapter-tag">Unit 2</div>
+    <h2>Partial Derivatives & Functions of Several Variables</h2>
+    <p>Euler's Theorem, Chain Rule, Taylor's Series, Lagrange's Method, Extreme Values</p>
+    <div class="chapter-meta">
+      <span class="cm-badge cm-purple">Partial Differentiation</span>
+      <span class="cm-badge cm-purple">Euler's Theorem</span>
+      <span class="cm-badge cm-purple">Optimization</span>
+      <span class="cm-badge cm-red">High Weightage</span>
+    </div>
+  </div>
+
+  <div class="formula-section open">
+    <div class="fs-header" onclick="toggleFS(this)">
+      <div class="fs-icon" style="background:rgba(139,92,246,.15)">📐</div>
+      <div class="fs-title" style="color:#a78bfa">Important Formulas — Unit 2</div>
+      <div class="fs-toggle">▼</div>
+    </div>
+    <div class="fs-body">
+      <div class="formula-grid">
+        <div class="formula-card">
+          <div class="formula-name">Euler's Theorem</div>
+          <div class="formula-math">If u is homogeneous of degree n:
+x·∂u/∂x + y·∂u/∂y = n·u
+For modified (u = f(v), v homo. deg n):
+x·∂u/∂x + y·∂u/∂y = n·f(v)/f'(v)</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">Chain Rule</div>
+          <div class="formula-math">If z=f(x,y), x=g(t), y=h(t):
+dz/dt = (∂z/∂x)(dx/dt)+(∂z/∂y)(dy/dt)
+If z=f(x,y), x=x(u,v), y=y(u,v):
+∂z/∂u=(∂z/∂x)(∂x/∂u)+(∂z/∂y)(∂y/∂u)</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">Taylor's Series (2 variables)</div>
+          <div class="formula-math">f(x,y) at (a,b):
+= f(a,b) + [(x-a)f_x+(y-b)f_y]
++ (1/2!)[(x-a)²f_xx+2(x-a)(y-b)f_xy
+         +(y-b)²f_yy] + ...
+At (0,0): a=0, b=0</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">Conditions for Extreme Values</div>
+          <div class="formula-math">Find: f_x=0, f_y=0 → critical points
+D = f_xx·f_yy - (f_xy)²
+D > 0, f_xx < 0 → Maximum
+D > 0, f_xx > 0 → Minimum
+D < 0 → Saddle point
+D = 0 → Inconclusive</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">Lagrange's Multiplier Method</div>
+          <div class="formula-math">To find extrema of f(x,y,z)
+subject to constraint g(x,y,z)=0:
+∇f = λ∇g
+∂f/∂x=λ∂g/∂x
+∂f/∂y=λ∂g/∂y
+∂f/∂z=λ∂g/∂z
+Then use constraint to find λ</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">Clairaut's Theorem</div>
+          <div class="formula-math">If f has continuous second
+partial derivatives:
+∂²f/∂x∂y = ∂²f/∂y∂x
+(Mixed partials are equal!)</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">Total Differential</div>
+          <div class="formula-math">dz = (∂z/∂x)dx + (∂z/∂y)dy
+Approximate change:
+Δz ≈ (∂z/∂x)Δx + (∂z/∂y)Δy</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">Modified Euler (sin⁻¹, tan⁻¹)</div>
+          <div class="formula-math">If u = sin⁻¹(v), v homogeneous deg n:
+x∂u/∂x + y∂u/∂y = n·tan(u)  [n=1/2 common]
+If u = tan⁻¹(v), v homogeneous deg n:
+x∂u/∂x + y∂u/∂y = n·sin(2u)/2</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-list">
+    <div class="q-list-header">📝 Part A — 2 Mark Questions</div>
+    <div class="qcard" onclick="toggleQ(this)">
+      <div class="qcard-head">
+        <span class="q-badge q-2m">2 Marks</span>
+        <span class="q-stars">⭐⭐⭐</span>
+        <span class="q-text">Q1. Prove ∂²f/∂x∂y = ∂²f/∂y∂x for f = x³+y³+z³+3xyz</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="qcard-body">
+        <div class="ans-box">
+          <div class="math-block">∂f/∂x = 3x² + 3yz
+∂²f/∂y∂x = 3z
+
+∂f/∂y = 3y² + 3xz
+∂²f/∂x∂y = 3z
+
+∴ Both equal 3z → Clairaut's Theorem verified ✓</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qcard" onclick="toggleQ(this)">
+      <div class="qcard-head">
+        <span class="q-badge q-2m">2 Marks</span>
+        <span class="q-stars">⭐⭐⭐</span>
+        <span class="q-text">Q2. If z=x²+y², x=t², y=2at, find dz/dt</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="qcard-body">
+        <div class="ans-box">
+          <div class="math-block">dz/dt = (∂z/∂x)(dx/dt) + (∂z/∂y)(dy/dt)
+      = (2x)(2t) + (2y)(2a)
+      = 2t²(2t) + 2(2at)(2a)
+      = 4t³ + 8a²t
+      = 4t(t² + 2a²)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-list">
+    <div class="q-list-header">📝 Part B — 8/10 Mark Questions</div>
+
+    <div class="qcard" onclick="toggleQ(this)">
+      <div class="qcard-head">
+        <span class="q-badge q-8m">8 Marks</span>
+        <span class="q-stars">⭐⭐⭐</span>
+        <span class="q-text">Q3. If u=f(x-y, y-z, z-x), prove ∂u/∂x + ∂u/∂y + ∂u/∂z = 0</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="qcard-body">
+        <div class="ans-box">
+          <div class="ans-step">Let p=x-y, q=y-z, r=z-x → u=f(p,q,r)</div>
+          <div class="math-block">∂p/∂x=1, ∂p/∂y=-1, ∂p/∂z=0
+∂q/∂x=0, ∂q/∂y=1, ∂q/∂z=-1
+∂r/∂x=-1, ∂r/∂y=0, ∂r/∂z=1
+
+∂u/∂x = f_p(1)+f_q(0)+f_r(-1) = f_p - f_r
+∂u/∂y = f_p(-1)+f_q(1)+f_r(0) = -f_p + f_q
+∂u/∂z = f_p(0)+f_q(-1)+f_r(1) = -f_q + f_r
+
+Adding all three:
+∂u/∂x + ∂u/∂y + ∂u/∂z = 0 ✓</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qcard" onclick="toggleQ(this)">
+      <div class="qcard-head">
+        <span class="q-badge q-10m">10 Marks</span>
+        <span class="q-stars">⭐⭐⭐</span>
+        <span class="q-text">Q4. Expand eˣsiny as a Taylor's series at (0,0) up to third degree terms</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="qcard-body">
+        <div class="ans-box">
+          <div class="ans-step">Compute all partial derivatives at (0,0)</div>
+          <div class="math-block">f = eˣsiny        → f(0,0)=0
+f_x = eˣsiny     → f_x(0,0)=0
+f_y = eˣcosy     → f_y(0,0)=1
+f_xx = eˣsiny    → f_xx(0,0)=0
+f_xy = eˣcosy    → f_xy(0,0)=1
+f_yy = -eˣsiny   → f_yy(0,0)=0
+f_xxx = eˣsiny   → 0
+f_xxy = eˣcosy   → 1
+f_xyy = -eˣsiny  → 0
+f_yyy = -eˣcosy  → -1</div>
+          <div class="ans-step">Taylor's formula at (0,0)</div>
+          <div class="math-block">f(x,y) = f + xf_x + yf_y 
+        + (1/2!)(x²f_xx+2xyf_xy+y²f_yy)
+        + (1/3!)(x³f_xxx+3x²yf_xxy+3xy²f_xyy+y³f_yyy)+...
+
+= 0 + 0 + y(1)
++ (1/2)(0 + 2xy(1) + 0)
++ (1/6)(0 + 3x²y(1) + 0 + y³(-1))
+
+eˣsiny = y + xy + x²y/2 - y³/6 + ...</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qcard" onclick="toggleQ(this)">
+      <div class="qcard-head">
+        <span class="q-badge q-8m">6 Marks</span>
+        <span class="q-stars">⭐⭐⭐</span>
+        <span class="q-text">Q5. If u=sin⁻¹[(x+y)/(√x+√y)], prove x·∂u/∂x + y·∂u/∂y = ½ tan u</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="qcard-body">
+        <div class="ans-box">
+          <div class="ans-step">Check homogeneity of v = sin u</div>
+          <div class="math-block">v = (x+y)/(√x+√y)
+v(tx,ty) = (tx+ty)/(√(tx)+√(ty))
+         = t(x+y)/(√t(√x+√y))
+         = t^(1/2)·v
+∴ v is homogeneous of degree n = 1/2</div>
+          <div class="ans-step">Apply Euler's theorem to v=sin u</div>
+          <div class="math-block">x·∂v/∂x + y·∂v/∂y = (1/2)v = (1/2)sin u
+
+But ∂v/∂x = cos u · ∂u/∂x
+
+cos u(x·∂u/∂x + y·∂u/∂y) = (1/2)sin u
+
+x·∂u/∂x + y·∂u/∂y = (sin u)/(2cos u) = (1/2)tan u ✓</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qcard" onclick="toggleQ(this)">
+      <div class="qcard-head">
+        <span class="q-badge q-10m">10 Marks</span>
+        <span class="q-stars">⭐⭐⭐</span>
+        <span class="q-text">Q6. Find greatest and least distances from (3,4,12) to sphere x²+y²+z²=1</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="qcard-body">
+        <div class="ans-box">
+          <div class="math-block">Distance from point (3,4,12) to origin:
+d = √(3²+4²+12²) = √(9+16+144) = √169 = 13
+
+Sphere has centre O=(0,0,0), radius r=1
+
+Greatest distance from (3,4,12) to sphere
+= d + r = 13 + 1 = 14
+
+Least distance from (3,4,12) to sphere
+= d - r = 13 - 1 = 12</div>
+          <div class="tip-box"><p>Key formula: For point P and sphere with centre C and radius r: max/min distance from P to sphere = |PC| ± r</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qcard" onclick="toggleQ(this)">
+      <div class="qcard-head">
+        <span class="q-badge q-8m">8 Marks</span>
+        <span class="q-stars">⭐⭐⭐</span>
+        <span class="q-text">Q7. Examine f(x,y) = x⁴+y⁴-2x²-2y²+4xy for extreme values</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="qcard-body">
+        <div class="ans-box">
+          <div class="ans-step">Step 1: Critical points (set f_x=0, f_y=0)</div>
+          <div class="math-block">f_x = 4x³-4x+4y = 0 → x³-x+y=0 ...(1)
+f_y = 4y³-4y+4x = 0 → y³-y+x=0 ...(2)
+Add (1)+(2): x³+y³=0 → x=-y
+Substitute y=-x in (1): x³-x-x=0
+x(x²-2)=0 → x=0,±√2
+Critical points: (0,0), (√2,-√2), (-√2,√2)</div>
+          <div class="ans-step">Step 2: D test at each point</div>
+          <div class="math-block">f_xx=12x²-4, f_yy=12y²-4, f_xy=4
+D = f_xx·f_yy - (f_xy)²
+
+At (0,0): D=(-4)(-4)-16=0 → Inconclusive
+At (√2,-√2): f_xx=20, f_yy=20
+  D = 400-16=384>0, f_xx=20>0 → MINIMUM
+  f(√2,-√2) = 4+4-4-4-8 = -8
+At (-√2,√2): Similarly → MINIMUM, f=-8</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qcard" onclick="toggleQ(this)">
+      <div class="qcard-head">
+        <span class="q-badge q-8m">8 Marks</span>
+        <span class="q-stars">⭐⭐⭐</span>
+        <span class="q-text">Q8. Find minimum of x²+y²+z² given ax+by+cz=p (Lagrange)</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="qcard-body">
+        <div class="ans-box">
+          <div class="math-block">F = x²+y²+z² - λ(ax+by+cz-p)
+
+∂F/∂x=0: 2x-λa=0 → x=λa/2
+∂F/∂y=0: 2y-λb=0 → y=λb/2
+∂F/∂z=0: 2z-λc=0 → z=λc/2
+
+Use constraint:
+a(λa/2)+b(λb/2)+c(λc/2)=p
+λ(a²+b²+c²)/2 = p → λ = 2p/(a²+b²+c²)
+
+Minimum = x²+y²+z²
+= λ²(a²+b²+c²)/4
+= p²/(a²+b²+c²)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="video-section">
+    <div class="q-list-header">📺 Tamil YouTube Videos — Unit 2</div>
+    <div class="video-grid">
+      <a class="video-card" href="https://www.youtube.com/results?search_query=euler+theorem+partial+derivatives+tamil+engineering+maths" target="_blank">
+        <div class="video-thumb" style="background:#1a1a2e"><div class="play-btn">▶</div></div>
+        <div class="video-info">
+          <div class="video-lang">🎬 Tamil</div>
+          <div class="video-title">Euler's Theorem — Tamil Full Explanation</div>
+          <div class="video-ch">Unit 2 · Homogeneous Functions</div>
+          <div class="yt-badge">▶ Watch on YouTube</div>
+        </div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/results?search_query=taylor+series+two+variables+tamil+maths" target="_blank">
+        <div class="video-thumb" style="background:#1a1a2e"><div class="play-btn">▶</div></div>
+        <div class="video-info">
+          <div class="video-lang">🎬 Tamil</div>
+          <div class="video-title">Taylor's Series 2 Variables — Tamil Tutorial</div>
+          <div class="video-ch">Unit 2 · eˣsiny expansion</div>
+          <div class="yt-badge">▶ Watch on YouTube</div>
+        </div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/results?search_query=lagrange+multiplier+method+tamil+engineering" target="_blank">
+        <div class="video-thumb" style="background:#1a1a2e"><div class="play-btn">▶</div></div>
+        <div class="video-info">
+          <div class="video-lang">🎬 Tamil</div>
+          <div class="video-title">Lagrange Multiplier Method — Tamil</div>
+          <div class="video-ch">Unit 2 · Constrained Optimization</div>
+          <div class="yt-badge">▶ Watch on YouTube</div>
+        </div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/results?search_query=maxima+minima+two+variables+tamil+engineering+maths" target="_blank">
+        <div class="video-thumb" style="background:#1a1a2e"><div class="play-btn">▶</div></div>
+        <div class="video-info">
+          <div class="video-lang">🎬 Tamil</div>
+          <div class="video-title">Extreme Values 2 Variables — Tamil</div>
+          <div class="video-ch">Unit 2 · D-test Method</div>
+          <div class="yt-badge">▶ Watch on YouTube</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- UNIT 3 -->
+<div class="section u3" id="u3">
+  <div class="chapter-header">
+    <div class="chapter-tag">Unit 3</div>
+    <h2>Integral Calculus</h2>
+    <p>Integration Techniques, Reduction Formulas, Applications — Area, Volume, Surface Area</p>
+    <div class="chapter-meta">
+      <span class="cm-badge cm-green">Wallis Formula</span>
+      <span class="cm-badge cm-green">King's Property</span>
+      <span class="cm-badge cm-green">Partial Fractions</span>
+      <span class="cm-badge cm-red">Important Tricks</span>
+    </div>
+  </div>
+
+  <div class="formula-section open">
+    <div class="fs-header" onclick="toggleFS(this)">
+      <div class="fs-icon" style="background:rgba(16,185,129,.15)">📐</div>
+      <div class="fs-title" style="color:#34d399">Important Formulas — Unit 3</div>
+      <div class="fs-toggle">▼</div>
+    </div>
+    <div class="fs-body">
+      <div class="formula-grid">
+        <div class="formula-card">
+          <div class="formula-name">Wallis Formula (Reduction)</div>
+          <div class="formula-math">∫₀^(π/2) sinⁿx dx = ∫₀^(π/2) cosⁿx dx
+n odd: (n-1)(n-3)···2 / n(n-2)···3
+n even: (n-1)(n-3)···1·(π/2) / n(n-2)···2
+e.g. cos⁷: (6·4·2)/(7·5·3) = 16/35</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">Properties of Definite Integrals</div>
+          <div class="formula-math">∫ₐᵇf(x)dx = ∫ₐᵇf(a+b-x)dx
+∫₀ᵃf(x)dx = ∫₀ᵃf(a-x)dx ← KING'S
+∫₋ₐᵃf(x)dx = 2∫₀ᵃf(x)dx [if f even]
+∫₋ₐᵃf(x)dx = 0 [if f odd]</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">Standard Integration Formulas</div>
+          <div class="formula-math">∫dx/(x²+a²) = (1/a)tan⁻¹(x/a)+C
+∫dx/√(a²-x²) = sin⁻¹(x/a)+C
+∫dx/√(x²-a²) = ln|x+√(x²-a²)|+C
+∫dx/√(x²+a²) = ln|x+√(x²+a²)|+C</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">Integration by Parts</div>
+          <div class="formula-math">∫u·dv = u·v - ∫v·du
+ILATE rule for choosing u:
+I-Inverse trig, L-Log, A-Algebraic
+T-Trigonometric, E-Exponential</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">Partial Fractions</div>
+          <div class="formula-math">Linear: A/(x-a)
+Repeated: A/(x-a) + B/(x-a)²
+Quadratic: (Ax+B)/(x²+bx+c)
+Then integrate each separately</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">Area & Arc Length</div>
+          <div class="formula-math">Area = ∫ₐᵇ y dx  (or ∫∫ dA)
+Area of ellipse = πab
+Arc length = ∫ₐᵇ √(1+(dy/dx)²) dx
+Surface of revolution (x-axis):
+S = 2π∫ₐᵇ y√(1+y'²) dx</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">Complete the Square</div>
+          <div class="formula-math">x²+bx+c = (x+b/2)²+(c-b²/4)
+e.g. x²-6x+13 = (x-3)²+4
+Then use standard formula:
+∫dx/((x-3)²+4) = (1/2)tan⁻¹((x-3)/2)+C</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">King's Property — Key Trick</div>
+          <div class="formula-math">I = ∫₀^(π/2) √sinx/(√sinx+√cosx)dx
+Using ∫₀ᵃf(a-x)dx:
+I = ∫₀^(π/2) √cosx/(√cosx+√sinx)dx
+2I = ∫₀^(π/2) 1·dx = π/2
+∴ I = π/4</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-list">
+    <div class="q-list-header">📝 Part A — 2 Mark Questions</div>
+    <div class="qcard" onclick="toggleQ(this)">
+      <div class="qcard-head">
+        <span class="q-badge q-2m">2 Marks</span>
+        <span class="q-stars">⭐⭐⭐</span>
+        <span class="q-text">Q1. Prove ∫₀ᵃ f(x)dx = ∫₀ᵃ f(a-x)dx</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="qcard-body">
+        <div class="ans-box">
+          <div class="math-block">Let t = a-x, then dt = -dx
+When x=0 → t=a; when x=a → t=0
+∫₀ᵃ f(x)dx = ∫ₐ⁰ f(a-t)(-dt)
+           = ∫₀ᵃ f(a-t)dt
+           = ∫₀ᵃ f(a-x)dx ✓</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qcard" onclick="toggleQ(this)">
+      <div class="qcard-head">
+        <span class="q-badge q-2m">2 Marks</span>
+        <span class="q-stars">⭐⭐⭐</span>
+        <span class="q-text">Q2. Evaluate ∫₀^(π/2) cos⁷x dx</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="qcard-body">
+        <div class="ans-box">
+          <div class="math-block">n=7 (odd) → Wallis formula:
+= (n-1)(n-3)(n-5) / n(n-2)(n-4)(n-6)·(2/1) wait:
+= (6)(4)(2) / (7)(5)(3)
+= 48/105 = 16/35</div>
+          <div class="tip-box"><p>n odd: multiply all even numbers down to 2 divided by all odd numbers down to 1 (no π/2 factor)</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qcard" onclick="toggleQ(this)">
+      <div class="qcard-head">
+        <span class="q-badge q-2m">2 Marks</span>
+        <span class="q-stars">⭐⭐⭐</span>
+        <span class="q-text">Q3. Evaluate ∫ dx/(x²-6x+13)</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="qcard-body">
+        <div class="ans-box">
+          <div class="math-block">Complete the square:
+x²-6x+13 = (x-3)²+4
+
+∫dx/((x-3)²+2²) = (1/2)tan⁻¹((x-3)/2)+C</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-list">
+    <div class="q-list-header">📝 Part B — 8/10 Mark Questions</div>
+
+    <div class="qcard" onclick="toggleQ(this)">
+      <div class="qcard-head">
+        <span class="q-badge q-8m">8 Marks</span>
+        <span class="q-stars">⭐⭐⭐</span>
+        <span class="q-text">Q4. Evaluate ∫₀^(π/2) √sinx/(√sinx+√cosx) dx using King's Property</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="qcard-body">
+        <div class="ans-box">
+          <div class="math-block">Let I = ∫₀^(π/2) √sinx/(√sinx+√cosx) dx ...(1)
+
+Using King's property [replace x by π/2-x]:
+sin(π/2-x)=cosx, cos(π/2-x)=sinx
+
+I = ∫₀^(π/2) √cosx/(√cosx+√sinx) dx ...(2)
+
+Add (1)+(2):
+2I = ∫₀^(π/2) (√sinx+√cosx)/(√sinx+√cosx) dx
+2I = ∫₀^(π/2) 1 dx = π/2
+
+∴ I = π/4</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qcard" onclick="toggleQ(this)">
+      <div class="qcard-head">
+        <span class="q-badge q-8m">8 Marks</span>
+        <span class="q-stars">⭐⭐⭐</span>
+        <span class="q-text">Q5. Evaluate I = ∫₀^(π/2) log sin x dx</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="qcard-body">
+        <div class="ans-box">
+          <div class="math-block">Let I = ∫₀^(π/2) log sinx dx ...(1)
+Using property: I = ∫₀^(π/2) log cosx dx ...(2)
+
+Add (1)+(2):
+2I = ∫₀^(π/2) log(sinx·cosx) dx
+   = ∫₀^(π/2) log(sin2x/2) dx
+   = ∫₀^(π/2) log(sin2x)dx - ∫₀^(π/2) log2 dx
+
+For ∫₀^(π/2) log(sin2x)dx:
+Let 2x=t → ∫₀^π (1/2)log(sint)dt = I [by half-period]
+
+2I = I - (π/2)log2
+∴ I = -(π/2)log2 or -π/2 · ln2</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qcard" onclick="toggleQ(this)">
+      <div class="qcard-head">
+        <span class="q-badge q-8m">8 Marks</span>
+        <span class="q-stars">⭐⭐⭐</span>
+        <span class="q-text">Q6. Evaluate ∫(3x-2)/[(x+1)²(x+3)] dx by partial fractions</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="qcard-body">
+        <div class="ans-box">
+          <div class="math-block">(3x-2)/[(x+1)²(x+3)] = A/(x+1) + B/(x+1)² + C/(x+3)
+
+Multiply both sides by (x+1)²(x+3):
+3x-2 = A(x+1)(x+3) + B(x+3) + C(x+1)²
+
+x = -1: -5 = B(2) → B = -5/2
+x = -3: -11 = C(-2)² = 4C → C = -11/4
+x = 0: -2 = 3A + 3B + C
+-2 = 3A - 15/2 - 11/4 = 3A - 41/4
+3A = -2+41/4 = 33/4 → A = 11/4
+
+∫ = (11/4)ln|x+1| + 5/[2(x+1)] - (11/4)ln|x+3| + C
+  = (11/4)ln|(x+1)/(x+3)| + 5/[2(x+1)] + C</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qcard" onclick="toggleQ(this)">
+      <div class="qcard-head">
+        <span class="q-badge q-8m">8 Marks</span>
+        <span class="q-stars">⭐⭐⭐</span>
+        <span class="q-text">Q7. Find the area enclosed by the ellipse x²/a² + y²/b² = 1</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="qcard-body">
+        <div class="ans-box">
+          <div class="math-block">From ellipse: y = (b/a)√(a²-x²)
+Area = 4∫₀ᵃ (b/a)√(a²-x²) dx
+
+Let x = a sinθ → dx = a cosθ dθ
+When x=0→θ=0; x=a→θ=π/2
+√(a²-x²) = a cosθ
+
+Area = 4(b/a)∫₀^(π/2) a cosθ · a cosθ dθ
+     = 4ab∫₀^(π/2) cos²θ dθ
+     = 4ab · π/4
+     = πab ✓</div>
+          <div class="tip-box"><p>Special case: Circle (a=b=r) → Area = πr²</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qcard" onclick="toggleQ(this)">
+      <div class="qcard-head">
+        <span class="q-badge q-8m">8 Marks</span>
+        <span class="q-stars">⭐⭐</span>
+        <span class="q-text">Q8. Surface area of solid: rotate y=2x+1, x=0 to x=3 about x-axis</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="qcard-body">
+        <div class="ans-box">
+          <div class="math-block">S = 2π∫ₐᵇ y√(1+(dy/dx)²) dx
+dy/dx = 2 → √(1+4) = √5
+
+S = 2π∫₀³ (2x+1)√5 dx
+  = 2π√5 [x²+x]₀³
+  = 2π√5 [(9+3)-(0)]
+  = 2π√5 · 12
+  = 24π√5</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="video-section">
+    <div class="q-list-header">📺 Tamil YouTube Videos — Unit 3</div>
+    <div class="video-grid">
+      <a class="video-card" href="https://www.youtube.com/results?search_query=wallis+formula+reduction+formula+tamil+engineering+maths" target="_blank">
+        <div class="video-thumb" style="background:#1a1a2e"><div class="play-btn">▶</div></div>
+        <div class="video-info">
+          <div class="video-lang">🎬 Tamil</div>
+          <div class="video-title">Wallis Formula & Reduction Formula — Tamil</div>
+          <div class="video-ch">Unit 3 · sin/cos power integrals</div>
+          <div class="yt-badge">▶ Watch on YouTube</div>
+        </div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/results?search_query=properties+definite+integration+tamil+engineering+maths" target="_blank">
+        <div class="video-thumb" style="background:#1a1a2e"><div class="play-btn">▶</div></div>
+        <div class="video-info">
+          <div class="video-lang">🎬 Tamil</div>
+          <div class="video-title">Properties of Definite Integrals — Tamil</div>
+          <div class="video-ch">Unit 3 · King's property tricks</div>
+          <div class="yt-badge">▶ Watch on YouTube</div>
+        </div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/results?search_query=partial+fractions+integration+tamil+maths+engineering" target="_blank">
+        <div class="video-thumb" style="background:#1a1a2e"><div class="play-btn">▶</div></div>
+        <div class="video-info">
+          <div class="video-lang">🎬 Tamil</div>
+          <div class="video-title">Partial Fractions Integration — Tamil Tutorial</div>
+          <div class="video-ch">Unit 3 · Decomposition method</div>
+          <div class="yt-badge">▶ Watch on YouTube</div>
+        </div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/results?search_query=area+ellipse+integration+tamil+maths" target="_blank">
+        <div class="video-thumb" style="background:#1a1a2e"><div class="play-btn">▶</div></div>
+        <div class="video-info">
+          <div class="video-lang">🎬 Tamil</div>
+          <div class="video-title">Area using Integration — Ellipse Tamil</div>
+          <div class="video-ch">Unit 3 · Applications</div>
+          <div class="yt-badge">▶ Watch on YouTube</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- UNIT 4 -->
+<div class="section u4" id="u4">
+  <div class="chapter-header">
+    <div class="chapter-tag">Unit 4</div>
+    <h2>Multiple Integrals</h2>
+    <p>Double Integrals, Change of Order, Polar Coordinates, Triple Integrals, Volumes</p>
+    <div class="chapter-meta">
+      <span class="cm-badge cm-gold">Double Integrals</span>
+      <span class="cm-badge cm-gold">Polar Coords</span>
+      <span class="cm-badge cm-gold">Triple Integrals</span>
+      <span class="cm-badge cm-red">High Marks</span>
+    </div>
+  </div>
+
+  <div class="formula-section open">
+    <div class="fs-header" onclick="toggleFS(this)">
+      <div class="fs-icon" style="background:rgba(245,158,11,.15)">📐</div>
+      <div class="fs-title" style="color:#fcd34d">Important Formulas — Unit 4</div>
+      <div class="fs-toggle">▼</div>
+    </div>
+    <div class="fs-body">
+      <div class="formula-grid">
+        <div class="formula-card">
+          <div class="formula-name">Double Integral</div>
+          <div class="formula-math">∫∫ f(x,y) dA
+= ∫ₐᵇ[∫_{g₁(x)}^{g₂(x)} f(x,y)dy]dx
+Evaluate inner integral first,
+then outer integral</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">Polar Coordinates</div>
+          <div class="formula-math">x = r cosθ, y = r sinθ
+x²+y² = r²
+dA = r dr dθ  ← DON'T FORGET r!
+∫∫f(x,y)dA = ∫∫f(rcosθ,rsinθ)·r dr dθ</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">Change of Order of Integration</div>
+          <div class="formula-math">1. Draw the region of integration
+2. Identify boundaries (curves)
+3. Find intersection points
+4. Rewrite limits in new order
+5. Evaluate</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">Triple Integral</div>
+          <div class="formula-math">∫∫∫ f(x,y,z) dV
+= ∫∫∫ f dx dy dz
+Volume = ∫∫∫ dV
+Evaluate innermost first</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">Spherical Coordinates</div>
+          <div class="formula-math">x=r sinφ cosθ
+y=r sinφ sinθ
+z=r cosφ
+dV = r² sinφ dr dφ dθ
+For sphere r=a: r:0→a, φ:0→π, θ:0→2π
+Volume = (4/3)πa³</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">Cylindrical Coordinates</div>
+          <div class="formula-math">x=r cosθ, y=r sinθ, z=z
+dV = r dr dθ dz
+Useful for cylinders and
+cone-shaped regions</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">Common Volume Results</div>
+          <div class="formula-math">Sphere x²+y²+z²=a²: V=(4/3)πa³
+Tetrahedron x+y+z=1: V=1/6
+Hemisphere: V=(2/3)πa³
+Cylinder r=a, 0→h: V=πa²h</div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">Region Identification (Change Order)</div>
+          <div class="formula-math">∫₀¹∫_{x²}^{2-x}:
+  y=x² (parabola), y=2-x (line)
+  Meet when x²=2-x → x=1 (y=1)
+  Change: y:0→1, x:0→√y  PLUS
+          y:1→2, x:0→2-y</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-list">
+    <div class="q-list-header">📝 Part A — 2 Mark Questions</div>
+    <div class="qcard" onclick="toggleQ(this)">
+      <div class="qcard-head">
+        <span class="q-badge q-2m">2 Marks</span>
+        <span class="q-stars">⭐⭐⭐</span>
+        <span class="q-text">Q1. Find ∫₋₁² ∫ₓ^(x-2) dy dx</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="qcard-body">
+        <div class="ans-box">
+          <div class="math-block">∫₋₁² ∫ₓ^(x-2) dy dx = ∫₋₁² [y]ₓ^(x-2) dx
+= ∫₋₁² [(x-2)-x] dx = ∫₋₁² (-2) dx
+= [-2x]₋₁² = -4-(-2·-1) = -4-2 = -6</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qcard" onclick="toggleQ(this)">
+      <div class="qcard-head">
+        <span class="q-badge q-2m">2 Marks</span>
+        <span class="q-stars">⭐⭐⭐</span>
+        <span class="q-text">Q2. Find ∫₀¹∫₀²∫₀³ xyz dx dy dz</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="qcard-body">
+        <div class="ans-box">
+          <div class="math-block">Since limits are constants, can separate:
+= [∫₀¹ z dz][∫₀² y dy][∫₀³ x dx]
+= [z²/2]₀¹ · [y²/2]₀² · [x²/2]₀³
+= (1/2)(2)(9/2) = 9/2</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-list">
+    <div class="q-list-header">📝 Part B — 8/10 Mark Questions</div>
+
+    <div class="qcard" onclick="toggleQ(this)">
+      <div class="qcard-head">
+        <span class="q-badge q-8m">8 Marks</span>
+        <span class="q-stars">⭐⭐⭐</span>
+        <span class="q-text">Q3. Change order of integration: ∫₀¹∫_{x²}^{2-x} xy dy dx and evaluate</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="qcard-body">
+        <div class="ans-box">
+          <div class="ans-step">Step 1: Identify region — y=x² and y=2-x meet at (1,1)</div>
+          <div class="math-block">Original: x:0→1, y:x²→2-x
+After change of order:
+  Region 1: y:0→1, x:0→√y
+  Region 2: y:1→2, x:0→2-y</div>
+          <div class="ans-step">Step 2: Evaluate each part</div>
+          <div class="math-block">I₁ = ∫₀¹∫₀^√y xy dx dy
+   = ∫₀¹ y[x²/2]₀^√y dy = ∫₀¹ y²/2 dy = [y³/6]₀¹ = 1/6
+
+I₂ = ∫₁²∫₀^(2-y) xy dx dy
+   = ∫₁² y[(2-y)²/2] dy
+   = (1/2)∫₁² y(4-4y+y²) dy
+   = (1/2)∫₁² (4y-4y²+y³) dy
+   = (1/2)[2y²-4y³/3+y⁴/4]₁²
+   = (1/2)[(8-32/3+4)-(2-4/3+1/4)]
+   = (1/2)[24/3-32/3-3+4/3-1/4] ...
+   = 3/8
+
+Total I = 1/6 + 3/8 = 4/24+9/24 = 13/24</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qcard" onclick="toggleQ(this)">
+      <div class="qcard-head">
+        <span class="q-badge q-8m">8 Marks</span>
+        <span class="q-stars">⭐⭐⭐</span>
+        <span class="q-text">Q4. Using polar coordinates, evaluate ∫₀ᵃ∫₀^√(a²-x²) (x²+y²) dy dx</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="qcard-body">
+        <div class="ans-box">
+          <div class="math-block">Region: first quadrant of circle x²+y²=a²
+
+Polar: x=rcosθ, y=rsinθ, x²+y²=r²
+dA = r dr dθ
+Limits: r:0→a, θ:0→π/2
+
+I = ∫₀^(π/2)∫₀ᵃ r²·r dr dθ
+  = ∫₀^(π/2) dθ · ∫₀ᵃ r³ dr
+  = [θ]₀^(π/2) · [r⁴/4]₀ᵃ
+  = (π/2) · (a⁴/4)
+  = πa⁴/8</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qcard" onclick="toggleQ(this)">
+      <div class="qcard-head">
+        <span class="q-badge q-8m">8 Marks</span>
+        <span class="q-stars">⭐⭐⭐</span>
+        <span class="q-text">Q5. Volume of solid bounded by x=0, y=0, z=0, x+y+z=1 by triple integrals</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="qcard-body">
+        <div class="ans-box">
+          <div class="math-block">Limits:
+  x: 0→1
+  y: 0→1-x
+  z: 0→1-x-y
+
+V = ∫₀¹∫₀^(1-x)∫₀^(1-x-y) dz dy dx
+
+= ∫₀¹∫₀^(1-x) (1-x-y) dy dx
+
+= ∫₀¹ [(1-x)y - y²/2]₀^(1-x) dx
+
+= ∫₀¹ [(1-x)²-(1-x)²/2] dx
+
+= ∫₀¹ (1-x)²/2 dx
+
+= (1/2)·[-(1-x)³/3]₀¹ = (1/2)(1/3) = 1/6</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qcard" onclick="toggleQ(this)">
+      <div class="qcard-head">
+        <span class="q-badge q-8m">8 Marks</span>
+        <span class="q-stars">⭐⭐⭐</span>
+        <span class="q-text">Q6. Volume of sphere x²+y²+z²=a² using spherical coordinates</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="qcard-body">
+        <div class="ans-box">
+          <div class="math-block">Spherical: x=r sinφ cosθ, y=r sinφ sinθ, z=r cosφ
+dV = r² sinφ dr dφ dθ
+Limits: r:0→a, φ:0→π, θ:0→2π
+
+V = ∫₀^2π∫₀^π∫₀ᵃ r²sinφ dr dφ dθ
+
+= ∫₀^2π dθ · ∫₀^π sinφ dφ · ∫₀ᵃ r²dr
+
+= [θ]₀^2π · [-cosφ]₀^π · [r³/3]₀ᵃ
+
+= 2π · [1+1] · a³/3
+
+= 2π · 2 · a³/3 = 4πa³/3 ✓</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="video-section">
+    <div class="q-list-header">📺 Tamil YouTube Videos — Unit 4</div>
+    <div class="video-grid">
+      <a class="video-card" href="https://www.youtube.com/results?search_query=double+integral+change+order+integration+tamil+engineering" target="_blank">
+        <div class="video-thumb" style="background:#1a1a2e"><div class="play-btn">▶</div></div>
+        <div class="video-info">
+          <div class="video-lang">🎬 Tamil</div>
+          <div class="video-title">Change of Order of Integration — Tamil</div>
+          <div class="video-ch">Unit 4 · Most Important Topic</div>
+          <div class="yt-badge">▶ Watch on YouTube</div>
+        </div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/results?search_query=polar+coordinates+double+integral+tamil+maths" target="_blank">
+        <div class="video-thumb" style="background:#1a1a2e"><div class="play-btn">▶</div></div>
+        <div class="video-info">
+          <div class="video-lang">🎬 Tamil</div>
+          <div class="video-title">Polar Coordinates Integration — Tamil</div>
+          <div class="video-ch">Unit 4 · x²+y² problems</div>
+          <div class="yt-badge">▶ Watch on YouTube</div>
+        </div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/results?search_query=triple+integral+volume+tamil+engineering+maths" target="_blank">
+        <div class="video-thumb" style="background:#1a1a2e"><div class="play-btn">▶</div></div>
+        <div class="video-info">
+          <div class="video-lang">🎬 Tamil</div>
+          <div class="video-title">Triple Integrals & Volume — Tamil Tutorial</div>
+          <div class="video-ch">Unit 4 · Volume of bounded solids</div>
+          <div class="yt-badge">▶ Watch on YouTube</div>
+        </div>
+      </a>
+      <a class="video-card" href="https://www.youtube.com/results?search_query=spherical+coordinates+volume+sphere+tamil+maths" target="_blank">
+        <div class="video-thumb" style="background:#1a1a2e"><div class="play-btn">▶</div></div>
+        <div class="video-info">
+          <div class="video-lang">🎬 Tamil</div>
+          <div class="video-title">Spherical Coordinates Volume — Tamil</div>
+          <div class="video-ch">Unit 4 · Sphere volume 4πa³/3</div>
+          <div class="yt-badge">▶ Watch on YouTube</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ALL VIDEOS -->
+<div class="section" id="videos">
+  <div class="chapter-header" style="background:var(--card2);border-color:var(--red)">
+    <div class="chapter-tag" style="color:#f87171">All Tamil Videos</div>
+    <h2>📺 Best Tamil YouTube Channels & Videos</h2>
+    <p>Easy-to-understand engineering maths videos in Tamil for all 4 units</p>
+  </div>
+
+  <div class="alert" style="background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.3)">
+    <p style="color:#fca5a5">🔍 All links open YouTube search for that topic in Tamil. Choose the video with most views and recent upload date for best quality!</p>
+  </div>
+
+  <div class="q-list-header">🎬 Recommended Tamil Channels</div>
+  <div class="grid2">
+    <div class="tip-card"><div class="tip-icon">📺</div><div class="tip-title">Kalvi Tamil Maths</div><div class="tip-desc">Best for applied calculus problems with clear step-by-step explanation in Tamil</div></div>
+    <div class="tip-card"><div class="tip-icon">📺</div><div class="tip-title">Engineering Maths Tamil</div><div class="tip-desc">Covers all B.E. semester topics with worked examples in Tamil medium</div></div>
+    <div class="tip-card"><div class="tip-icon">📺</div><div class="tip-title">GATE Maths Tamil</div><div class="tip-desc">High-quality concept videos — also useful for university exams</div></div>
+    <div class="tip-card"><div class="tip-icon">📺</div><div class="tip-title">MA6151 Tamil Maths</div><div class="tip-desc">Specifically covers Anna University 1st semester applied maths syllabus</div></div>
+  </div>
+
+  <div class="q-list-header" style="margin-top:8px">Unit 1 — Differential Calculus</div>
+  <div class="video-grid">
+    <a class="video-card" href="https://www.youtube.com/results?search_query=limits+continuity+differentiability+engineering+mathematics+tamil" target="_blank">
+      <div class="video-thumb" style="background:#1a1a2e"><div class="play-btn">▶</div></div>
+      <div class="video-info"><div class="video-lang">🎬 Tamil · Unit 1</div><div class="video-title">Limits & Continuity — Complete Tamil</div><div class="yt-badge">▶ YouTube Search</div></div>
+    </a>
+    <a class="video-card" href="https://www.youtube.com/results?search_query=rolle+mean+value+theorem+proof+tamil+anna+university" target="_blank">
+      <div class="video-thumb" style="background:#1a1a2e"><div class="play-btn">▶</div></div>
+      <div class="video-info"><div class="video-lang">🎬 Tamil · Unit 1</div><div class="video-title">Rolle's & MVT — Proof + Problems Tamil</div><div class="yt-badge">▶ YouTube Search</div></div>
+    </a>
+    <a class="video-card" href="https://www.youtube.com/results?search_query=maxima+minima+calculus+problems+solved+tamil" target="_blank">
+      <div class="video-thumb" style="background:#1a1a2e"><div class="play-btn">▶</div></div>
+      <div class="video-info"><div class="video-lang">🎬 Tamil · Unit 1</div><div class="video-title">Maxima Minima Solved Problems Tamil</div><div class="yt-badge">▶ YouTube Search</div></div>
+    </a>
+  </div>
+
+  <div class="q-list-header" style="margin-top:24px">Unit 2 — Partial Derivatives</div>
+  <div class="video-grid">
+    <a class="video-card" href="https://www.youtube.com/results?search_query=partial+differentiation+basics+tamil+engineering" target="_blank">
+      <div class="video-thumb" style="background:#1a1a2e"><div class="play-btn">▶</div></div>
+      <div class="video-info"><div class="video-lang">🎬 Tamil · Unit 2</div><div class="video-title">Partial Differentiation Basics Tamil</div><div class="yt-badge">▶ YouTube Search</div></div>
+    </a>
+    <a class="video-card" href="https://www.youtube.com/results?search_query=euler+theorem+homogeneous+function+tamil+problems" target="_blank">
+      <div class="video-thumb" style="background:#1a1a2e"><div class="play-btn">▶</div></div>
+      <div class="video-info"><div class="video-lang">🎬 Tamil · Unit 2</div><div class="video-title">Euler's Theorem Problems Solved Tamil</div><div class="yt-badge">▶ YouTube Search</div></div>
+    </a>
+    <a class="video-card" href="https://www.youtube.com/results?search_query=lagrange+method+problems+tamil+engineering+maths" target="_blank">
+      <div class="video-thumb" style="background:#1a1a2e"><div class="play-btn">▶</div></div>
+      <div class="video-info"><div class="video-lang">🎬 Tamil · Unit 2</div><div class="video-title">Lagrange Method Problems Tamil</div><div class="yt-badge">▶ YouTube Search</div></div>
+    </a>
+  </div>
+
+  <div class="q-list-header" style="margin-top:24px">Unit 3 — Integration</div>
+  <div class="video-grid">
+    <a class="video-card" href="https://www.youtube.com/results?search_query=integration+by+parts+tamil+engineering+maths+full" target="_blank">
+      <div class="video-thumb" style="background:#1a1a2e"><div class="play-btn">▶</div></div>
+      <div class="video-info"><div class="video-lang">🎬 Tamil · Unit 3</div><div class="video-title">Integration by Parts — Full Tamil</div><div class="yt-badge">▶ YouTube Search</div></div>
+    </a>
+    <a class="video-card" href="https://www.youtube.com/results?search_query=sin+cos+power+reduction+formula+integral+tamil" target="_blank">
+      <div class="video-thumb" style="background:#1a1a2e"><div class="play-btn">▶</div></div>
+      <div class="video-info"><div class="video-lang">🎬 Tamil · Unit 3</div><div class="video-title">Sin/Cos Power Reduction Tamil</div><div class="yt-badge">▶ YouTube Search</div></div>
+    </a>
+    <a class="video-card" href="https://www.youtube.com/results?search_query=log+sin+x+integral+0+to+pi/2+tamil+proof" target="_blank">
+      <div class="video-thumb" style="background:#1a1a2e"><div class="play-btn">▶</div></div>
+      <div class="video-info"><div class="video-lang">🎬 Tamil · Unit 3</div><div class="video-title">∫log sinx dx Proof — Tamil</div><div class="yt-badge">▶ YouTube Search</div></div>
+    </a>
+  </div>
+
+  <div class="q-list-header" style="margin-top:24px">Unit 4 — Multiple Integrals</div>
+  <div class="video-grid">
+    <a class="video-card" href="https://www.youtube.com/results?search_query=double+integral+basics+tamil+anna+university" target="_blank">
+      <div class="video-thumb" style="background:#1a1a2e"><div class="play-btn">▶</div></div>
+      <div class="video-info"><div class="video-lang">🎬 Tamil · Unit 4</div><div class="video-title">Double Integrals Introduction Tamil</div><div class="yt-badge">▶ YouTube Search</div></div>
+    </a>
+    <a class="video-card" href="https://www.youtube.com/results?search_query=change+of+order+double+integral+tamil+problems+solved" target="_blank">
+      <div class="video-thumb" style="background:#1a1a2e"><div class="play-btn">▶</div></div>
+      <div class="video-info"><div class="video-lang">🎬 Tamil · Unit 4</div><div class="video-title">Change of Order Problems Solved Tamil</div><div class="yt-badge">▶ YouTube Search</div></div>
+    </a>
+    <a class="video-card" href="https://www.youtube.com/results?search_query=triple+integral+volume+problems+tamil+engineering" target="_blank">
+      <div class="video-thumb" style="background:#1a1a2e"><div class="play-btn">▶</div></div>
+      <div class="video-info"><div class="video-lang">🎬 Tamil · Unit 4</div><div class="video-title">Triple Integral Volume Problems Tamil</div><div class="yt-badge">▶ YouTube Search</div></div>
+    </a>
+  </div>
+</div>
+
+<!-- EXAM TIPS -->
+<div class="section" id="tips">
+  <div class="chapter-header" style="border-color:#f59e0b">
+    <div class="chapter-tag" style="color:#fcd34d">Exam Strategy</div>
+    <h2>⚡ Exam Tips & Quick Revision</h2>
+    <p>Smart strategies to score maximum marks in MA25C01</p>
+  </div>
+
+  <div class="q-list-header">🎯 Part A Strategy (20 marks — 2 each)</div>
+  <div class="tips-grid">
+    <div class="tip-card"><div class="tip-icon">✅</div><div class="tip-title">Q1: Limit</div><div class="tip-desc">Direct substitution for polynomials. Answer = 8</div></div>
+    <div class="tip-card"><div class="tip-icon">✅</div><div class="tip-title">Q2: Implicit diff</div><div class="tip-desc">dy/dx = -(ax+hy)/(hx+by) — memorize this!</div></div>
+    <div class="tip-card"><div class="tip-icon">✅</div><div class="tip-title">Q3: Clairaut's</div><div class="tip-desc">Just compute ∂²f/∂x∂y and ∂²f/∂y∂x and show equal</div></div>
+    <div class="tip-card"><div class="tip-icon">✅</div><div class="tip-title">Q4: Chain rule</div><div class="tip-desc">dz/dt = (∂z/∂x)(dx/dt) + (∂z/∂y)(dy/dt)</div></div>
+    <div class="tip-card"><div class="tip-icon">✅</div><div class="tip-title">Q5: Saddle point</div><div class="tip-desc">D &lt; 0 → saddle. Write definition + example</div></div>
+    <div class="tip-card"><div class="tip-icon">✅</div><div class="tip-title">Q6: Proof property</div><div class="tip-desc">Substitute t=a-x in ∫₀ᵃ f(x)dx</div></div>
+    <div class="tip-card"><div class="tip-icon">✅</div><div class="tip-title">Q7: Wallis cos⁷</div><div class="tip-desc">(6·4·2)/(7·5·3) = 16/35</div></div>
+    <div class="tip-card"><div class="tip-icon">✅</div><div class="tip-title">Q8: Complete square</div><div class="tip-desc">x²-6x+13=(x-3)²+4 → (1/2)tan⁻¹((x-3)/2)+C</div></div>
+    <div class="tip-card"><div class="tip-icon">✅</div><div class="tip-title">Q9: Double integral</div><div class="tip-desc">Evaluate inner first. Answer = -6</div></div>
+    <div class="tip-card"><div class="tip-icon">✅</div><div class="tip-title">Q10: Triple integral</div><div class="tip-desc">Separate when limits constant. Answer = 9/2</div></div>
+  </div>
+
+  <div class="q-list-header" style="margin-top:24px">🔥 Must-Know Tricks</div>
+  <div class="grid2">
+    <div class="formula-card">
+      <div class="formula-name">King's Property Trick</div>
+      <div class="formula-math">∫₀^(π/2) f(sinx)/[f(sinx)+f(cosx)] dx
+= π/4  ALWAYS!
+Works for √sinx, sinx, sin²x etc.</div>
+    </div>
+    <div class="formula-card">
+      <div class="formula-name">Log sin x Result</div>
+      <div class="formula-math">∫₀^(π/2) log(sinx)dx = -π/2 · log2
+∫₀^(π/2) log(cosx)dx = -π/2 · log2
+Both are same! Memorize!</div>
+    </div>
+    <div class="formula-card">
+      <div class="formula-name">Euler's Theorem Shortcut</div>
+      <div class="formula-math">Check if u is homogeneous of degree n
+→ x∂u/∂x + y∂u/∂y = nu
+For sin⁻¹(v) where v is degree n:
+→ x∂u/∂x + y∂u/∂y = n·tan(u)</div>
+    </div>
+    <div class="formula-card">
+      <div class="formula-name">Polar Conversion</div>
+      <div class="formula-math">Circle x²+y²=a²:
+First quadrant: r:0→a, θ:0→π/2
+Full circle: r:0→a, θ:0→2π
+ALWAYS add extra r in dA=r dr dθ!</div>
+    </div>
+    <div class="formula-card">
+      <div class="formula-name">Volume of Tetrahedron</div>
+      <div class="formula-math">x+y+z=1 (with x,y,z≥0): V=1/6
+ax+by+cz=d: V=d³/(6abc)
+Sphere r=a: V=4πa³/3</div>
+    </div>
+    <div class="formula-card">
+      <div class="formula-name">Lagrange Min x²+y²+z²</div>
+      <div class="formula-math">Given ax+by+cz=p:
+Min value = p²/(a²+b²+c²)
+MEMORIZE THIS RESULT!
+Comes every year!</div>
+    </div>
+  </div>
+
+  <div class="q-list-header" style="margin-top:24px">📅 Last-Day Revision Checklist</div>
+  <div class="tips-grid">
+    <div class="tip-card"><div class="tip-icon">📌</div><div class="tip-title">Wallis Formula</div><div class="tip-desc">n odd vs even — practice at least 3 problems each</div></div>
+    <div class="tip-card"><div class="tip-icon">📌</div><div class="tip-title">MVT Verification</div><div class="tip-desc">5 steps: check conditions, compute f(a)/f(b), find c</div></div>
+    <div class="tip-card"><div class="tip-icon">📌</div><div class="tip-title">Taylor's at (0,0)</div><div class="tip-desc">Compute 10 partial derivatives table for eˣsiny</div></div>
+    <div class="tip-card"><div class="tip-icon">📌</div><div class="tip-title">Change of Order</div><div class="tip-desc">Always DRAW the region! Identify intersection points</div></div>
+    <div class="tip-card"><div class="tip-icon">📌</div><div class="tip-title">Partial Fractions</div><div class="tip-desc">Practice A/(x+a)+B/(x+a)²+C/(x+b) decomposition</div></div>
+    <div class="tip-card"><div class="tip-icon">📌</div><div class="tip-title">Spherical Volume</div><div class="tip-desc">dV=r²sinφ dr dφ dθ. Result = 4πa³/3</div></div>
+  </div>
+
+  <div style="margin-top:24px;background:var(--card2);border:1px solid var(--gold);border-radius:var(--radius);padding:20px 24px">
+    <p style="font-size:16px;font-weight:700;color:var(--gold2);margin-bottom:8px">🏆 Scoring Strategy for 100 marks</p>
+    <p style="font-size:14px;color:var(--text2);line-height:1.8">
+      • <strong style="color:var(--text)">Part A (20 marks):</strong> All 10 questions are from known formulas — attempt ALL. Aim 18-20.<br>
+      • <strong style="color:var(--text)">Part B (80 marks):</strong> 5 questions × 16 marks. Each has (a) or (b) choice — do 1 from each.<br>
+      • <strong style="color:var(--text)">Time Management:</strong> Part A = 30 min. Each Part B question = 24 min.<br>
+      • <strong style="color:var(--text)">Focus Units:</strong> Unit 2 (Partial Derivatives) and Unit 4 (Multiple Integrals) carry most marks.<br>
+      • <strong style="color:var(--text)">Write neatly:</strong> Show all steps for full marks even if final answer is wrong.
+    </p>
+  </div>
+</div>
+
+</div><!-- end main -->
+
+<div style="text-align:center;padding:24px;color:var(--text3);font-size:13px;border-top:1px solid var(--border);margin-top:16px">
+  MA25C01 Applied Calculus Study Guide · B.E./B.Tech First Semester · Anna University · Nov/Dec 2025 Arrear Exam · All the best! 🎯
+</div>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  const el = document.getElementById(id);
+  if(el) el.classList.add('active');
+  if(btn) btn.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function toggleQ(card) {
+  card.classList.toggle('open');
+}
+function toggleFS(header) {
+  header.parentElement.classList.toggle('open');
+}
+</script>
+</body>
+</html>
